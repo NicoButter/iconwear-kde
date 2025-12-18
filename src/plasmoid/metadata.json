@@ -1,0 +1,23 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "lordcommander@example.com",
+                "Name": "Lord Commander"
+            }
+        ],
+        "Category": "Utilities",
+        "Description": "Shows icon wear based on usage",
+        "Icon": "emblem-shared",
+        "Id": "org.kde.iconwear",
+        "Name": "Icon Wear",
+        "ServiceTypes": [
+            "Plasma/Applet"
+        ],
+        "Version": "0.1"
+    },
+    "PlasmaShell": {
+        "AppletIcon": "emblem-shared"
+    }
+}

@@ -1,0 +1,86 @@
+# CMake build directory
+build/
+cmake-build-debug/
+cmake-build-release/
+
+# Compiled object files
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+
+# Compiled executable files
+*.exe
+*.out
+
+# Qt generated files
+*_autogen/
+*_autogen.cpp
+*_autogen.h
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.user
+*.creator.user
+*.pro.user
+.project
+.cproject
+.settings/
+
+# Qt Creator
+CMakeLists.txt.user
+CMakeLists.txt.user.*
+
+# Build artifacts
+bin/
+lib/
+*.a
+*.la
+*.o
+*.so
+
+# KDE/Plasma specific
+*.krunner_cache
+.config/
+
+# Python bytecode (if any Python scripts are used)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local configuration files
+*.local
+*.conf.local
+config.local
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+
+# Testing
+Testing/
+CTestTestfile.cmake
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+
+# Install directory (if used locally)
+install/
