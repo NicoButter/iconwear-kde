@@ -82,6 +82,14 @@ sudo pacman -S cmake extra-cmake-modules gcc \
     kconfig ki18n kio kactivities kactivities-stats plasma-framework
 ```
 
+#### openSUSE Tumbleweed / Leap
+```bash
+sudo zypper install cmake extra-cmake-modules gcc-c++ \
+    libqt5-qtbase-devel libqt5-qtdeclarative-devel \
+    kconfig-devel ki18n-devel kio-devel \
+    kactivities5-devel kactivities-stats5-devel plasma-framework-devel
+```
+
 ### 2️⃣ Compilación e Instalación
 
 ```bash
