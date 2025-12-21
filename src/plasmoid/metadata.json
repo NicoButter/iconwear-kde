@@ -12,12 +12,7 @@
         "Icon": "emblem-shared",
         "Id": "org.kde.iconwear",
         "Name": "Icon Wear",
-        "ServiceTypes": [
-            "Plasma/Applet"
-        ],
         "Version": "0.1"
     },
-    "PlasmaShell": {
-        "AppletIcon": "emblem-shared"
-    }
+    "X-Plasma-API-Minimum-Version": "6.0"
 }

@@ -13,15 +13,16 @@
  * Se comunica con el daemon UsageTracker via DBus para obtener/actualizar datos.
  */
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 3.0 as PlasmaComponents
-import org.kde.plasma.plasmoid 2.0
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.components as PlasmaComponents
+import org.kde.plasma.plasmoid
+import org.kde.kirigami as Kirigami
 
 /**
- * @class Item (root element)
+ * @class PlasmoidItem (root element)
  * @brief Contenedor principal del widget
  * 
  * Propiedades:
@@ -32,8 +33,9 @@ import org.kde.plasma.plasmoid 2.0
  * - reconstructions: Contador de veces que fue "restaurada"
  * - showMetrics: Flag para mostrar/ocultar el tooltip
  */
-Item {
-    Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
+PlasmoidItem {
+    id: root
+    preferredRepresentation: fullRepresentation
 
     property string appId: "org.kde.dolphin.desktop"    ///< App siendo monitoreada
     property real wearLevel: 0.0                         ///< Desgaste 0-100
@@ -43,14 +45,8 @@ Item {
     property bool showMetrics: false                     ///< Mostrar tooltip con stats
 
     // DBus connection to the daemon
-    PlasmaCore.DataSource {
-        id: dbusSource
-        engine: "executable"
-        connectedSources: []
-        onNewData: {
-            // Handle DBus responses if needed
-        }
-    }
+    // Note: In Plasma 6, use proper DBus interface via Qt.createQmlObject or C++ plugin
+    // For now we use a Timer to simulate polling
 
     // For simplicity in this MVP, we'll use a Timer to poll or just hardcode for now
     // In a real app, we'd use a proper DBus interface in QML
@@ -134,11 +130,12 @@ Item {
             Layout.alignment: Qt.AlignCenter
 
             // Icono base de KDE (renderizado por el shader)
-            PlasmaCore.IconItem {
+            Kirigami.Icon {
                 id: iconItem
                 anchors.fill: parent
                 source: "system-file-manager"
-                visible: false // El shader lo renderiza, no este
+                visible: true
+                layer.enabled: true  // Necesario para ShaderEffectSource
             }
 
             /**
@@ -155,7 +152,7 @@ Item {
                 id: wearShaderComponent
                 anchors.fill: parent
                 source: iconItem
-                wearLevel: parent.parent.parent.wearLevel / 100.0
+                wearLevel: root.wearLevel / 100.0
             }
 
             /**
@@ -200,8 +197,8 @@ Item {
             visible: false
             Layout.alignment: Qt.AlignCenter
             Layout.topMargin: 8
-            color: PlasmaCore.ColorScope.backgroundColor
-            border.color: PlasmaCore.ColorScope.textColor
+            color: Kirigami.Theme.backgroundColor
+            border.color: Kirigami.Theme.textColor
             border.width: 1
             radius: 4
             width: metricsText.width + 12
@@ -215,7 +212,7 @@ Item {
                       "Activo: " + activeMinutes + " min\n" +
                       "Restauraciones: " + reconstructions
                 font.pixelSize: 10
-                color: PlasmaCore.ColorScope.textColor
+                color: Kirigami.Theme.textColor
             }
         }
 
